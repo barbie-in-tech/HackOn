@@ -23,7 +23,7 @@ class ProductDetailScreen extends StatelessWidget {
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                         colors: [
-                          Color.fromRGBO(105, 61, 197, 1),
+                          Color.fromRGBO(158, 111, 255, 1),
                           Color.fromRGBO(255, 136, 226, 1),
                         ],
                       ),
