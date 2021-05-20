@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "745934558308",
+    "project_id": "hackon-df431",
+    "storage_bucket": "hackon-df431.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745934558308:android:a7e0ca4b35285f4850bb71",
+        "android_client_info": {
+          "package_name": "com.rgtechcafe.thrifter_hackon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745934558308-r2084dl2o7hvo88or837smj5v76ncq73.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiCdgPdFOF6eOuSmDxYMOD7cpXXri0RIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745934558308-r2084dl2o7hvo88or837smj5v76ncq73.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

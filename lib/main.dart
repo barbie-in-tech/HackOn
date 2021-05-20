@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/ProductDetail_Screen.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
 
@@ -15,9 +16,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: "MontserratMed"
       ),
-      initialRoute: homeScreen,
+      initialRoute: proDetail,
       routes: {
+        proDetail: (_) => ProductDetailScreen(),
         homeScreen: (_) => HomeScreen(),
       },
     );
