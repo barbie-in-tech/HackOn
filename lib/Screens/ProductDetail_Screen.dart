@@ -18,6 +18,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       //TODO: App Header
       body: SingleChildScrollView(
@@ -25,11 +26,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 300,
+              height: mediaQuery.height * 0.4,
               child: Stack(
                 children: [
                   Container(
-                    height: 220,
+                    height: mediaQuery.height * 0.3,
                     width: double.infinity,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -56,7 +57,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ),
                   Positioned(
-                    left: 0,
+                    left: 20,
                     bottom: 0,
                     child: Container(
                       alignment: Alignment.center,
@@ -66,12 +67,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Image.network(
                           productImages[selectedPreviewImage],
                           fit: BoxFit.fill,
-                          width: 330,
+                          width: mediaQuery.width * 0.75,
                           scale: 0.7,
                         ),
                       ),
-                      height: 150,
-                      width: 330,
+                      height: mediaQuery.height * 0.2,
+                      width: mediaQuery.width * 0.75,
                     ),
                   ),
                 ],
@@ -105,7 +106,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: mediaQuery.height * 0.02),
             Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 8.0,
@@ -169,7 +170,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: mediaQuery.height * 0.03),
             Buttons(
               buttonText: "BUY NOW",
               textColor: Color.fromRGBO(0, 189, 189, 1),
@@ -205,8 +206,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               width: 2,
             ),
           ),
-          height: 50,
-          width: 50,
+          height: MediaQuery.of(context).size.height * 0.075,
+          width: MediaQuery.of(context).size.width * 0.15,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(13),
             child: Image.network(
