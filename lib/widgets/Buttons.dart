@@ -21,7 +21,7 @@ class Buttons extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Container(
-          height: 50,
+          height: MediaQuery.of(context).size.height*0.07,
           width: double.infinity,
           alignment: Alignment.center,
           decoration: BoxDecoration(
