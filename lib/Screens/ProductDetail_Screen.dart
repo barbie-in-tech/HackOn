@@ -1,7 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/widgets/Buttons.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class ProductDetailScreen extends StatefulWidget {
+  @override
+  _ProductDetailScreenState createState() => _ProductDetailScreenState();
+}
+
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
+  final List productImages = [
+    "https://www.thoughtco.com/thmb/C7RiS4QG5TXcBG2d_Sh9i4hFpg0=/3620x2036/smart/filters:no_upscale()/close-up-of-clothes-hanging-in-row-739240657-5a78b11f8e1b6e003715c0ec.jpg",
+    "https://images.squarespace-cdn.com/content/v1/5442b6cce4b0cf00d1a3bef2/1593123550394-AU3A29QJ3HU2BEE97O62/ke17ZwdGBToddI8pDm48kMh3mVmBaCAeGwqCLG3iONRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIarJWwnumkapRz_nmTYj1dpaH2rx--_BA62nv3IYPJxMKMshLAGzx4R3EDFOm1kBS/American-Made-Clothing-American-Trench",
+    "https://images.squarespace-cdn.com/content/v1/5442b6cce4b0cf00d1a3bef2/1596139091521-K8PDSWTUFK20VW0T7NFD/ke17ZwdGBToddI8pDm48kA7e4wRd4ZDldd6PbS9BVI5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpyvXn8XMwMq-aCqUEV8fAVtSaljtELrLyv8fOgO87iUSoS6gU-xB5T__qABPCYgFO0/Organic-Clothing-Brands-MATE-The-Label",
+  ];
+
+  int selectedPreviewImage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +64,10 @@ class ProductDetailScreen extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.network(
-                          "https://www.thoughtco.com/thmb/C7RiS4QG5TXcBG2d_Sh9i4hFpg0=/3620x2036/smart/filters:no_upscale()/close-up-of-clothes-hanging-in-row-739240657-5a78b11f8e1b6e003715c0ec.jpg",
-                          fit: BoxFit.cover,
+                          productImages[selectedPreviewImage],
+                          fit: BoxFit.fill,
                           width: 330,
+                          scale: 0.7,
                         ),
                       ),
                       height: 150,
@@ -65,47 +80,9 @@ class ProductDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(7.0),
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(13),
-                      child: Image.network(
-                        "https://www.thoughtco.com/thmb/C7RiS4QG5TXcBG2d_Sh9i4hFpg0=/3620x2036/smart/filters:no_upscale()/close-up-of-clothes-hanging-in-row-739240657-5a78b11f8e1b6e003715c0ec.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(7.0),
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(13),
-                      child: Image.network(
-                        "https://www.thoughtco.com/thmb/C7RiS4QG5TXcBG2d_Sh9i4hFpg0=/3620x2036/smart/filters:no_upscale()/close-up-of-clothes-hanging-in-row-739240657-5a78b11f8e1b6e003715c0ec.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(7.0),
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(13),
-                      child: Image.network(
-                        "https://www.thoughtco.com/thmb/C7RiS4QG5TXcBG2d_Sh9i4hFpg0=/3620x2036/smart/filters:no_upscale()/close-up-of-clothes-hanging-in-row-739240657-5a78b11f8e1b6e003715c0ec.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                ...List.generate(
+                  productImages.length,
+                  (index) => imagesPreview(index),
                 ),
               ],
             ),
@@ -193,59 +170,50 @@ class ProductDetailScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 50),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 8,
-              ),
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(0, 189, 189, 0.2),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    "BUY NOW",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromRGBO(0, 189, 189, 1),
-                    ),
-                  ),
-                ),
-              ),
+            Buttons(
+              buttonText: "BUY NOW",
+              textColor: Color.fromRGBO(0, 189, 189, 1),
+              buttonColor: Color.fromRGBO(0, 189, 189, 0.2),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 8,
-              ),
-              child: InkWell(
-                onTap: () {},
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(0, 189, 189, 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    "ADD TO CART",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
+            Buttons(
+              buttonText: "ADD TO CART",
+              textColor: Colors.white,
+              buttonColor: Color.fromRGBO(0, 189, 189, 1),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  InkWell imagesPreview(int index) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          selectedPreviewImage = index;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(7.0),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(13),
+            border: Border.all(
+              color: selectedPreviewImage == index
+                  ? Color.fromRGBO(0, 189, 189, 1)
+                  : Colors.transparent,
+              width: 2,
+            ),
+          ),
+          height: 50,
+          width: 50,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(13),
+            child: Image.network(
+              productImages[index],
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
       ),
     );
