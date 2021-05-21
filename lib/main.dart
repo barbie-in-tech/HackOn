@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/closet_Screen.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
 
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: homeScreen,
+      initialRoute: closetScreen,
       routes: {
         homeScreen: (_) => HomeScreen(),
+        closetScreen: (_) => ClosetScreen(),
       },
     );
   }
