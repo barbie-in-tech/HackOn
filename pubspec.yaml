@@ -49,12 +49,13 @@ flutter:
         - asset: fonts/Montserrat-Regular.ttf
     - family: Cantarell
       fonts:
-        - asset: fonts/Cantarell-Regular.ttf
+        - asset: fonts/Cantarell-Regular.ttf    
+
+
   assets:
+    - assest/images/cloth_product.jpg
     - images/
-
-  # To add assets to your application, add an assets section, like this:
-
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -67,9 +68,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  
-        
-          
+
+  fonts:
+    - family: MontserratMed
+      fonts:
+        - asset: assest/fonts/Montserrat-Medium.ttf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

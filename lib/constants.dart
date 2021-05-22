@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-String homeScreen = "/homeScreen";
 const double kHorizontalListHeight = 60.0;
 const kHorizontalListButtonColor = Color(0xFF00BDBD);
 const kBodyTextStyle = TextStyle(
@@ -30,3 +29,7 @@ final kDescriptiveBoxStyle = BoxDecoration(
   borderRadius: BorderRadius.circular(30.0),
   color: Color(0xFF9E6FFF),
 );
+
+String homeScreen = "/homeScreen";
+String proDetail = "/productDetailScreen";
+
