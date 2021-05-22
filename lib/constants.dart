@@ -32,4 +32,5 @@ final kDescriptiveBoxStyle = BoxDecoration(
 
 String homeScreen = "/homeScreen";
 String proDetail = "/productDetailScreen";
+String closetScreen = "/closetScreen";
 
