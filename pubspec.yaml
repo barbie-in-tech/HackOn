@@ -43,10 +43,18 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-Regular.ttf
+    - family: Cantarell
+      fonts:
+        - asset: fonts/Cantarell-Regular.ttf    
 
-  # To add assets to your application, add an assets section, like this:
+
   assets:
     - assest/images/cloth_product.jpg
+    - images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -60,10 +68,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
+
   fonts:
     - family: MontserratMed
       fonts:
         - asset: assest/fonts/Montserrat-Medium.ttf
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
