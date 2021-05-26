@@ -5,6 +5,9 @@ import 'package:thrifter_hackon/Screens/closet_Screen.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
 
+import 'Screens/cart.dart';
+import 'Screens/login.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,12 +24,14 @@ class MyApp extends StatelessWidget {
         fontFamily: "MontserratMed"
       ),
       
-      initialRoute: homeScreen,
+      initialRoute: login,
 
       routes: {
         proDetail: (_) => ProductDetailScreen(),
         homeScreen: (_) => HomeScreen(),
         closetScreen: (_) => ClosetScreen(),
+        shoppingcart: (_) => ShoppingCart(),
+        login: (_) => Login(),
       },
     );
   }
