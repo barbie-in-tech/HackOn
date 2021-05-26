@@ -43,13 +43,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-  fonts:
-    - family: Montserrat
-      fonts:
-        - asset: fonts/Montserrat-Regular.ttf
-    - family: Cantarell
-      fonts:
-        - asset: fonts/Cantarell-Regular.ttf    
+
 
 
   assets:
