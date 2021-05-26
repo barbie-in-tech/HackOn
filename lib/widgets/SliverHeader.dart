@@ -22,7 +22,7 @@ SliverAppBar sliverHeader(String title) {
             //Shop
           }),
     ],
-    expandedHeight: 120.0,
+    expandedHeight: 160.0,
     stretch: true,
     floating: true,
     pinned: true,
@@ -40,7 +40,10 @@ SliverAppBar sliverHeader(String title) {
         ),
       ),
       child: FlexibleSpaceBar(
-        title: Text(title),
+        title: Text(
+          title,
+          style: TextStyle(fontSize: 25.0),
+        ),
       ),
     ),
   );

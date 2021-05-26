@@ -32,4 +32,4 @@ String proDetail = "/productDetailScreen";
 String closetScreen = "/closetScreen";
 String shoppingcart = "/cart.dart";
 String login = "/login.dart";
-
+String profile = "/profile.dart";

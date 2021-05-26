@@ -33,6 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    SizedBox(
+                      height: mediaQuery.height * 0.02,
+                    ),
                     Container(
                       alignment: Alignment.center,
                       height: kHorizontalListHeight,
@@ -40,7 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemCount: 5,
                         shrinkWrap: true,
                         padding: EdgeInsets.symmetric(
-                            horizontal: 25.0, vertical: 5.0),
+                          horizontal: 25.0,
+                          vertical: 5.0,
+                        ),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           return HorizontalListButton(
@@ -56,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: mediaQuery.height * 0.02,
+                      height: mediaQuery.height * 0.01,
                     ),
                     ThriftStoreDescriptionBox(
                       thriftDescription:
