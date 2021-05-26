@@ -1,6 +1,8 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/constants.dart';
+import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,95 +17,110 @@ class _HomeScreenState extends State<HomeScreen> {
     'something',
     'something2',
   ];
+
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              height: mediaQuery.height * 0.4,
+      body: CustomScrollView(
+        slivers: [
+          sliverHeader("Hey Random!"),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: mediaQuery.height * 0.02,
+                    ),
+                    Container(
+                      alignment: Alignment.center,
+                      height: kHorizontalListHeight,
+                      child: ListView.separated(
+                        itemCount: 5,
+                        shrinkWrap: true,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 25.0,
+                          vertical: 5.0,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (BuildContext context, int index) {
+                          return HorizontalListButton(
+                            text: titles[index],
+                            onPressed: () {},
+                          );
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return SizedBox(
+                            width: mediaQuery.width * 0.05,
+                          );
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: mediaQuery.height * 0.01,
+                    ),
+                    ThriftStoreDescriptionBox(
+                      thriftDescription:
+                          'Some Text About Thrift Stores in Multiple animated container',
+                    ),
+                    Container(
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Check these out!',
+                        style: kHeadingTextStyle,
+                      ),
+                    ),
+                    GridView.count(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.all(20.0),
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      crossAxisCount: 2,
+                      children: [
+                        GridContainer(
+                          category: 'tops.jpeg',
+                          title: 'TOPS',
+                          onPressed: () {
+                            print('here');
+                          },
+                        ),
+                        GridContainer(
+                          category: 'party_wear.jpg',
+                          title: 'PARTY WEAR',
+                          onPressed: () {
+                            print('here');
+                          },
+                        ),
+                        GridContainer(
+                          category: 'party_wear.jpg',
+                          title: 'PARTY WEAR',
+                          onPressed: () {
+                            print('here');
+                          },
+                        ),
+                        GridContainer(
+                          category: 'party_wear.jpg',
+                          title: 'PARTY WEAR',
+                          onPressed: () {
+                            print('here');
+                          },
+                        ),
+                      ],
+                    )
+                  ],
+                );
+              },
+              childCount: 1,
             ),
-            Container(
-              alignment: Alignment.center,
-              height: kHorizontalListHeight,
-              child: ListView.separated(
-                itemCount: 5,
-                shrinkWrap: true,
-                padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 5.0),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return HorizontalListButton(
-                    text: titles[index],
-                    onPressed: () {},
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    width: mediaQuery.width * 0.05,
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              height: mediaQuery.height * 0.02,
-            ),
-            ThriftStoreDescriptionBox(
-              thriftDescription:
-                  'Some Text About Thrift Stores in Multiple animated container',
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                'Check these out!',
-                style: kHeadingTextStyle,
-              ),
-            ),
-            GridView.count(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.all(20.0),
-              mainAxisSpacing: 10,
-              crossAxisSpacing: 10,
-              crossAxisCount: 2,
-              children: [
-                GridContainer(
-                  category: 'tops.jpeg',
-                  title: 'TOPS',
-                  onPressed: () {
-                    print('here');
-                  },
-                ),
-                GridContainer(
-                  category: 'party_wear.jpg',
-                  title: 'PARTY WEAR',
-                  onPressed: () {
-                    print('here');
-                  },
-                ),
-                GridContainer(
-                  category: 'party_wear.jpg',
-                  title: 'PARTY WEAR',
-                  onPressed: () {
-                    print('here');
-                  },
-                ),
-                GridContainer(
-                  category: 'party_wear.jpg',
-                  title: 'PARTY WEAR',
-                  onPressed: () {
-                    print('here');
-                  },
-                ),
-              ],
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -114,9 +131,11 @@ class GridContainer extends StatelessWidget {
       {@required this.category,
       @required this.title,
       @required this.onPressed});
+
   final String category;
   final String title;
   final Function onPressed;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -149,6 +168,7 @@ class GridContainer extends StatelessWidget {
 
 class ThriftStoreDescriptionBox extends StatelessWidget {
   ThriftStoreDescriptionBox({@required this.thriftDescription});
+
   final String thriftDescription;
 
   @override
@@ -171,8 +191,10 @@ class ThriftStoreDescriptionBox extends StatelessWidget {
 
 class HorizontalListButton extends StatelessWidget {
   HorizontalListButton({@required this.text, @required this.onPressed});
+
   final String text;
   final Function onPressed;
+
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(

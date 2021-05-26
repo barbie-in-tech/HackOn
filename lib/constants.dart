@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 const double kHorizontalListHeight = 60.0;
 const kHorizontalListButtonColor = Color(0xFF00BDBD);
 const kBodyTextStyle = TextStyle(
-  fontFamily: 'Montserrat',
   fontWeight: FontWeight.w600,
   color: Colors.white,
   fontSize: 16.0,
@@ -12,14 +11,12 @@ const kBodyTextStyle = TextStyle(
 const kHeadingTextStyle = TextStyle(
   color: Colors.black,
   fontSize: 28.0,
-  fontFamily: 'Montserrat',
   fontWeight: FontWeight.bold,
 );
 
 const kCategoryGridTextStyle = TextStyle(
   letterSpacing: 2.5,
   color: Colors.black,
-  fontFamily: 'Cantarell',
   fontSize: 24.0,
   fontStyle: FontStyle.italic,
   fontWeight: FontWeight.w900,
@@ -33,4 +30,6 @@ final kDescriptiveBoxStyle = BoxDecoration(
 String homeScreen = "/homeScreen";
 String proDetail = "/productDetailScreen";
 String closetScreen = "/closetScreen";
-
+String shoppingcart = "/cart.dart";
+String login = "/login.dart";
+String profile = "/profile.dart";
