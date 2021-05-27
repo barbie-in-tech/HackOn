@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/home_Screen.dart';
 
-SliverAppBar sliverHeader(String title) {
+SliverAppBar sliverHeader(IconData icon, String title, Function onPressed) {
   return SliverAppBar(
     backgroundColor: Colors.purple,
     shape: ContinuousRectangleBorder(
       borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(50),
         bottomRight: Radius.circular(50),
+        topLeft: Radius.circular(isDrawerOpen ? 80 : 0),
       ),
     ),
-    leading: null,
+    leading: IconButton(
+      icon: Icon(icon),
+      onPressed: onPressed,
+    ),
     actions: <Widget>[
       IconButton(
           icon: Icon(Icons.search),
@@ -37,6 +42,7 @@ SliverAppBar sliverHeader(String title) {
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
+          topLeft: Radius.circular(isDrawerOpen ? 30.0 : 0.0),
         ),
       ),
       child: FlexibleSpaceBar(
