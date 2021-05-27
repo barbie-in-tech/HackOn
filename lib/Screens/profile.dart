@@ -94,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Container(
                       margin: EdgeInsets.all(5.0),
                       padding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 70.0),
+                          horizontal: 20.0, vertical: 50.0),
                       height: mediaQuery.height * 0.4,
                       width: double.infinity,
                       alignment: Alignment.topLeft,

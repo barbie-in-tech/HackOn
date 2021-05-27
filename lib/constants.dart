@@ -27,9 +27,39 @@ final kDescriptiveBoxStyle = BoxDecoration(
   color: Color(0xFF9E6FFF),
 );
 
+List<Map> drawerItems = [
+  {
+    'icon': Icons.person,
+    'title': 'Profile',
+  },
+  {
+    'icon': Icons.person,
+    'title': 'Profile',
+  },
+  {
+    'icon': Icons.person,
+    'title': 'Profile',
+  },
+  {
+    'icon': Icons.person,
+    'title': 'Profile',
+  },
+  {
+    'icon': Icons.person,
+    'title': 'Profile',
+  },
+];
+const pi = 180;
+const kDrawerTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 22,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.bold);
+
 String homeScreen = "/homeScreen";
 String proDetail = "/productDetailScreen";
 String closetScreen = "/closetScreen";
 String shoppingcart = "/cart.dart";
 String login = "/login.dart";
 String profile = "/profile.dart";
+String mainScreen = "/main_Screen.dart";

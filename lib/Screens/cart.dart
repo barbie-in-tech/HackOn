@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_Screen.dart';
 
 enum SingingCharacter { paytm, upi, bank }
 
@@ -18,7 +19,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
           Container(
             child: Center(
               child: Text(
-                "Shompping Carmt",
+                "Shopping Cart",
                 style: TextStyle(color: Colors.white, fontSize: 35.0),
               ),
             ),
