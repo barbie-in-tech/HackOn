@@ -8,7 +8,7 @@ import 'package:thrifter_hackon/constants.dart';
 
 import './Screens/login.dart';
 import 'Screens/cart.dart';
-
+import 'package:flutter/services.dart';
 void main() {
   runApp(MyApp());
 }
@@ -19,6 +19,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
     print(userId);
     return MaterialApp(
       title: 'Flutter Demo',

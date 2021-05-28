@@ -119,13 +119,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: double.infinity,
                     alignment: Alignment.topLeft,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        SizedBox(height: mediaQuery.height * 0.05,),
+                                               Text(
                           "Name",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 45,
+                            fontSize: 40,
                             fontWeight: FontWeight.w800,
                           ),
                           textAlign: TextAlign.justify,
@@ -143,6 +144,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: IconButton(icon: Icon(Icons.navigate_before, color: Colors.white, size: 30,), onPressed: (){Navigator.pop(context);}),
+                ),
+
                 Positioned(
                   left: mediaQuery.width * 0.36,
                   top: mediaQuery.height * 0.14,
