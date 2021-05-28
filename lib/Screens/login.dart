@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
 import 'package:uuid/uuid.dart';
 
 import '../main.dart';
-
 
 class Login extends StatefulWidget {
   @override
@@ -47,11 +47,21 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
-              onPressed: () {
+              onPressed: () async {
                 setState(() {
                   userId = Uuid().v4();
                   isDrawerOpen = false;
                 });
+                try {
+                  await FirebaseFirestore.instance
+                      .collection("Users")
+                      .doc(userId)
+                      .set({
+                    "userId": userId,
+                  });
+                } catch (err) {
+                  print(err);
+                }
                 Navigator.of(context).pushReplacementNamed(mainScreen);
               }),
         ),
