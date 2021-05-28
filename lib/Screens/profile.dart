@@ -113,16 +113,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: Container(
                     margin: EdgeInsets.all(5.0),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 50.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
                     height: mediaQuery.height * 0.4,
                     width: double.infinity,
                     alignment: Alignment.topLeft,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: mediaQuery.height * 0.05,),
-                                               Text(
+                        SizedBox(
+                          height: mediaQuery.height * 0.03,
+                        ),
+                        Text(
                           "Name",
                           style: TextStyle(
                             color: Colors.white,
@@ -146,9 +148,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
-                  child: IconButton(icon: Icon(Icons.navigate_before, color: Colors.white, size: 30,), onPressed: (){Navigator.pop(context);}),
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.navigate_before,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                 ),
-
                 Positioned(
                   left: mediaQuery.width * 0.36,
                   top: mediaQuery.height * 0.14,
