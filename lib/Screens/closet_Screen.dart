@@ -26,8 +26,8 @@ class _ClosetScreenState extends State<ClosetScreen> {
                       height: 20.0,
                     ),
                     Container(
-                      width: 360.0,
-                      height: 100.0,
+                   width: MediaQuery.of(context).size.width * 0.85,
+          height: MediaQuery.of(context).size.height * 0.09,
                       decoration: BoxDecoration(
                         color: Color(0xFF00BDBD).withOpacity(0.2),
                         borderRadius: BorderRadius.all(
@@ -48,7 +48,6 @@ class _ClosetScreenState extends State<ClosetScreen> {
 }
 
 /*final _firestore = FirebaseFirestore.instance;
-
 class ClosetStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -68,3 +67,4 @@ class ClosetStream extends StatelessWidget {
   }
 }
 */
+

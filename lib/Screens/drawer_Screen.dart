@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/categories.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
 
@@ -75,7 +77,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     icon: Icons.category,
                     title: 'Categories',
                     onTap: () {
-                      Navigator.pushNamed(context, closetScreen);
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Categories()));
                     },
                   ),
                   MenuOption(
@@ -87,14 +89,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                   MenuOption(
                     icon: Icons.star,
-                    title: 'All CLosets',
+                    title: 'All Closets',
                     onTap: () {
                       Navigator.pushNamed(context, closetScreen);
                     },
                   ),
                   MenuOption(
                     icon: Icons.handyman,
-                    title: 'Become a Thrifter',
+                    title: 'Become a thrifter',
                     onTap: () {},
                   ),
                 ],

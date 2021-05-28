@@ -52,7 +52,7 @@ List<Map> drawerItems = [
 const pi = 180;
 const kDrawerTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 20,
+  fontSize: 17,
   fontWeight: FontWeight.bold,
 );
 
