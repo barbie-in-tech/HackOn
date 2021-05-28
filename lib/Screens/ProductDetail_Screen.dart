@@ -51,8 +51,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       "Shirt Dress with Motif",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 25,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),

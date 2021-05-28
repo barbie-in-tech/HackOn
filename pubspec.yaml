@@ -28,6 +28,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  image_picker: ^0.7.4
+  uuid: ^3.0.4
 
 dev_dependencies:
   flutter_test:
@@ -43,13 +45,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-  fonts:
-    - family: Montserrat
-      fonts:
-        - asset: fonts/Montserrat-Regular.ttf
-    - family: Cantarell
-      fonts:
-        - asset: fonts/Cantarell-Regular.ttf    
+
 
 
   assets:
