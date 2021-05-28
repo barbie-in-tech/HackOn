@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
+import 'package:uuid/uuid.dart';
 
-class Login extends StatelessWidget {
+import '../main.dart';
+
+
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +48,11 @@ class Login extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed(homeScreen);
+                setState(() {
+                  userId = Uuid().v4();
+                  isDrawerOpen = false;
+                });
+                Navigator.of(context).pushReplacementNamed(mainScreen);
               }),
         ),
       ),
