@@ -4,12 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/constants.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
+  double xOffset = 0;
+  double yOffset = 0;
+  double scaleFactor = 1;
+bool isDrawerOpen = false;
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
+
   List<String> titles = [
     'Men',
     'Women',
@@ -21,10 +28,42 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    return Scaffold(
-      body: CustomScrollView(
+    return AnimatedContainer(
+      transform: Matrix4.translationValues(xOffset, yOffset, 0)
+        ..scale(scaleFactor)
+        ..rotateY(isDrawerOpen ? -0.7 : 0),
+      duration: Duration(milliseconds: 250),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(isDrawerOpen ? 40.0 : 0.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey[900].withOpacity(0.5),
+            spreadRadius: 35,
+            blurRadius: 27,
+            offset: Offset(0, 8),
+          ),
+        ],
+      ),
+      child: CustomScrollView(
         slivers: [
-          sliverHeader("Hey Random!"),
+          sliverHeader(Icons.menu, "Hey Random!", () {
+            setState(() {
+              if (!isDrawerOpen) {
+                xOffset = 230;
+                yOffset = 150;
+
+                scaleFactor = 0.7;
+                isDrawerOpen = true;
+              } else {
+                xOffset = 0;
+                yOffset = 0;
+
+                scaleFactor = 1;
+                isDrawerOpen = false;
+              }
+            });
+          }),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
@@ -33,6 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    SizedBox(
+                      height: mediaQuery.height * 0.02,
+                    ),
                     Container(
                       alignment: Alignment.center,
                       height: kHorizontalListHeight,
@@ -40,7 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemCount: 5,
                         shrinkWrap: true,
                         padding: EdgeInsets.symmetric(
-                            horizontal: 25.0, vertical: 5.0),
+                          horizontal: 25.0,
+                          vertical: 5.0,
+                        ),
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           return HorizontalListButton(
@@ -56,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: mediaQuery.height * 0.02,
+                      height: mediaQuery.height * 0.01,
                     ),
                     ThriftStoreDescriptionBox(
                       thriftDescription:
