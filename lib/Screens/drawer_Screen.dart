@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
+
+import '../main.dart';
 
 class DrawerScreen extends StatefulWidget {
   @override
@@ -59,6 +62,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             Container(
               width: 200.0,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MenuOption(
                     icon: Icons.person,
@@ -98,7 +102,28 @@ class _DrawerScreenState extends State<DrawerScreen> {
             ),
             ListTile(
               onTap: () {
-                Navigator.popUntil(context, (login) => true);
+                setState(() {
+                  if (!isDrawerOpen) {
+                    xOffset = 230;
+                    yOffset = 150;
+
+                    scaleFactor = 0.7;
+                    isDrawerOpen = true;
+                  } else {
+                    xOffset = 0;
+                    yOffset = 0;
+
+                    scaleFactor = 1;
+                    isDrawerOpen = false;
+                  }
+                  userId = null;
+                });
+
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  login,
+                  (Route<dynamic> route) => false,
+                );
               },
               contentPadding: EdgeInsets.fromLTRB(0, 20, 20, 20),
               leading: Icon(
@@ -120,13 +145,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
 
 class MenuOption extends StatelessWidget {
   MenuOption({@required this.icon, @required this.title, @required this.onTap});
+
   final Function onTap;
   final IconData icon;
   final String title;
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.fromLTRB(0, 20, 20, 20),
+      contentPadding: EdgeInsets.fromLTRB(0, 5, 20, 5),
       onTap: onTap,
       leading: Icon(
         icon,

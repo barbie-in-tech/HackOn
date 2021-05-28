@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
+import 'package:thrifter_hackon/Screens/AddProduct_Screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -30,39 +29,62 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(top: 16.0),
-        child: SizedBox(
-          height: 95.0,
-          width: 95.0,
-          child: FloatingActionButton(
-            onPressed: () {},
-            elevation: 5.0,
-            backgroundColor: Colors.white,
-            child: Container(
-              height: 85.0,
-              width: 85.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    Color.fromRGBO(158, 111, 255, 1),
-                    Color.fromRGBO(255, 136, 226, 1),
-                  ],
-                ),
+      floatingActionButton: SizedBox(
+        height: 60.0,
+        width: 60.0,
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                transitionDuration: Duration(milliseconds: 500),
+                pageBuilder: (
+                  BuildContext context,
+                  Animation<double> animation,
+                  Animation<double> secondaryAnimation,
+                ) {
+                  return AddProduct();
+                },
+                transitionsBuilder: (
+                  BuildContext context,
+                  Animation<double> animation,
+                  Animation<double> secondaryAnimation,
+                  Widget child,
+                ) {
+                  return Align(
+                    child: FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    ),
+                  );
+                },
               ),
-              child: Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 52.0,
+            );
+          },
+          elevation: 5.0,
+          backgroundColor: Colors.white,
+          child: Container(
+            height: 50.0,
+            width: 50.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  Color.fromRGBO(158, 111, 255, 1),
+                  Color.fromRGBO(255, 136, 226, 1),
+                ],
               ),
+            ),
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+              size: 52.0,
             ),
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       //TODO: App Header
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -72,55 +94,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
             height: mediaQuery.height * 0.33,
             child: Stack(
               children: [
-                Flexible(
-                  flex: 4,
-                  child: Container(
-                    width: double.infinity,
-                    height: mediaQuery.height * 0.25,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Color.fromRGBO(158, 111, 255, 1),
-                          Color.fromRGBO(255, 136, 226, 1),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
+                Container(
+                  width: double.infinity,
+                  height: mediaQuery.height * 0.25,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Color.fromRGBO(158, 111, 255, 1),
+                        Color.fromRGBO(255, 136, 226, 1),
+                      ],
                     ),
-                    child: Container(
-                      margin: EdgeInsets.all(5.0),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 50.0),
-                      height: mediaQuery.height * 0.4,
-                      width: double.infinity,
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            "Name",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 45,
-                              fontWeight: FontWeight.w800,
-                            ),
-                            textAlign: TextAlign.justify,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: Container(
+                    margin: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 50.0),
+                    height: mediaQuery.height * 0.4,
+                    width: double.infinity,
+                    alignment: Alignment.topLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          "Name",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 45,
+                            fontWeight: FontWeight.w800,
                           ),
-                          Text(
-                            "@username",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.justify,
+                          textAlign: TextAlign.justify,
+                        ),
+                        Text(
+                          "@username",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
                           ),
-                        ],
-                      ),
+                          textAlign: TextAlign.justify,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -169,27 +188,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Colors.black,
-        selectedItemColor: kHorizontalListButtonColor,
-        backgroundColor: Colors.white,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 35.0,
-            ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              size: 35.0,
-            ),
-            label: 'Profile',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   unselectedItemColor: Colors.black,
+      //   selectedItemColor: kHorizontalListButtonColor,
+      //   backgroundColor: Colors.white,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.home,
+      //         size: 35.0,
+      //       ),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         Icons.person,
+      //         size: 35.0,
+      //       ),
+      //       label: 'Profile',
+      //     ),
+      //   ],
+      // ),
     );
   }
 

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/constants.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
-  double xOffset = 0;
-  double yOffset = 0;
-  double scaleFactor = 1;
+double xOffset = 0;
+double yOffset = 0;
+double scaleFactor = 1;
 bool isDrawerOpen = false;
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +15,23 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
+  void drawerHandler() {
+    setState(() {
+      if (!isDrawerOpen) {
+        xOffset = 230;
+        yOffset = 150;
+
+        scaleFactor = 0.7;
+        isDrawerOpen = true;
+      } else {
+        xOffset = 0;
+        yOffset = 0;
+
+        scaleFactor = 1;
+        isDrawerOpen = false;
+      }
+    });
+  }
 
   List<String> titles = [
     'Men',
@@ -28,138 +44,125 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    return AnimatedContainer(
-      transform: Matrix4.translationValues(xOffset, yOffset, 0)
-        ..scale(scaleFactor)
-        ..rotateY(isDrawerOpen ? -0.7 : 0),
-      duration: Duration(milliseconds: 250),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(isDrawerOpen ? 40.0 : 0.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey[900].withOpacity(0.5),
-            spreadRadius: 35,
-            blurRadius: 27,
-            offset: Offset(0, 8),
-          ),
-        ],
-      ),
-      child: CustomScrollView(
-        slivers: [
-          sliverHeader(Icons.menu, "Hey Random!", () {
-            setState(() {
-              if (!isDrawerOpen) {
-                xOffset = 230;
-                yOffset = 150;
-
-                scaleFactor = 0.7;
-                isDrawerOpen = true;
-              } else {
-                xOffset = 0;
-                yOffset = 0;
-
-                scaleFactor = 1;
-                isDrawerOpen = false;
-              }
-            });
-          }),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    SizedBox(
-                      height: mediaQuery.height * 0.02,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      height: kHorizontalListHeight,
-                      child: ListView.separated(
-                        itemCount: 5,
-                        shrinkWrap: true,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 25.0,
-                          vertical: 5.0,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (BuildContext context, int index) {
-                          return HorizontalListButton(
-                            text: titles[index],
-                            onPressed: () {},
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) {
-                          return SizedBox(
-                            width: mediaQuery.width * 0.05,
-                          );
-                        },
-                      ),
-                    ),
-                    SizedBox(
-                      height: mediaQuery.height * 0.01,
-                    ),
-                    ThriftStoreDescriptionBox(
-                      thriftDescription:
-                          'Some Text About Thrift Stores in Multiple animated container',
-                    ),
-                    Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-                      padding: EdgeInsets.all(10.0),
-                      child: Text(
-                        'Check these out!',
-                        style: kHeadingTextStyle,
-                      ),
-                    ),
-                    GridView.count(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      padding: EdgeInsets.all(20.0),
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      crossAxisCount: 2,
-                      children: [
-                        GridContainer(
-                          category: 'tops.jpeg',
-                          title: 'TOPS',
-                          onPressed: () {
-                            print('here');
-                          },
-                        ),
-                        GridContainer(
-                          category: 'party_wear.jpg',
-                          title: 'PARTY WEAR',
-                          onPressed: () {
-                            print('here');
-                          },
-                        ),
-                        GridContainer(
-                          category: 'party_wear.jpg',
-                          title: 'PARTY WEAR',
-                          onPressed: () {
-                            print('here');
-                          },
-                        ),
-                        GridContainer(
-                          category: 'party_wear.jpg',
-                          title: 'PARTY WEAR',
-                          onPressed: () {
-                            print('here');
-                          },
-                        ),
-                      ],
-                    )
-                  ],
-                );
-              },
-              childCount: 1,
+    return GestureDetector(
+      onTap: isDrawerOpen ? drawerHandler : null,
+      child: AnimatedContainer(
+        transform: Matrix4.translationValues(xOffset, yOffset, 0)
+          ..scale(scaleFactor)
+          ..rotateY(isDrawerOpen ? -0.7 : 0),
+        duration: Duration(milliseconds: 250),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(isDrawerOpen ? 40.0 : 0.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[900].withOpacity(0.5),
+              spreadRadius: 35,
+              blurRadius: 27,
+              offset: Offset(0, 8),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: CustomScrollView(
+          slivers: [
+            sliverHeader(Icons.menu, "Hey Random!", drawerHandler),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      SizedBox(
+                        height: mediaQuery.height * 0.02,
+                      ),
+                      Container(
+                        alignment: Alignment.center,
+                        height: kHorizontalListHeight,
+                        child: ListView.separated(
+                          itemCount: 5,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 25.0,
+                            vertical: 5.0,
+                          ),
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext context, int index) {
+                            return HorizontalListButton(
+                              text: titles[index],
+                              onPressed: () {},
+                            );
+                          },
+                          separatorBuilder: (BuildContext context, int index) {
+                            return SizedBox(
+                              width: mediaQuery.width * 0.05,
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(
+                        height: mediaQuery.height * 0.01,
+                      ),
+                      ThriftStoreDescriptionBox(
+                        thriftDescription:
+                            'Some Text About Thrift Stores in Multiple animated container',
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 5.0),
+                        padding: EdgeInsets.all(10.0),
+                        child: Text(
+                          'Check these out!',
+                          style: kHeadingTextStyle,
+                        ),
+                      ),
+                      GridView.count(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        padding: EdgeInsets.all(20.0),
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        crossAxisCount: 2,
+                        children: [
+                          GridContainer(
+                            category: 'tops.jpeg',
+                            title: 'TOPS',
+                            onPressed: () {
+                              print('here');
+                            },
+                          ),
+                          GridContainer(
+                            category: 'party_wear.jpg',
+                            title: 'PARTY WEAR',
+                            onPressed: () {
+                              print('here');
+                            },
+                          ),
+                          GridContainer(
+                            category: 'party_wear.jpg',
+                            title: 'PARTY WEAR',
+                            onPressed: () {
+                              print('here');
+                            },
+                          ),
+                          GridContainer(
+                            category: 'party_wear.jpg',
+                            title: 'PARTY WEAR',
+                            onPressed: () {
+                              print('here');
+                            },
+                          ),
+                        ],
+                      )
+                    ],
+                  );
+                },
+                childCount: 1,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

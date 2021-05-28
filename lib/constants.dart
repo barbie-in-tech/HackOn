@@ -51,10 +51,10 @@ List<Map> drawerItems = [
 ];
 const pi = 180;
 const kDrawerTextStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 22,
-    fontFamily: 'Montserrat',
-    fontWeight: FontWeight.bold);
+  color: Colors.white,
+  fontSize: 20,
+  fontWeight: FontWeight.bold,
+);
 
 String homeScreen = "/homeScreen";
 String proDetail = "/productDetailScreen";

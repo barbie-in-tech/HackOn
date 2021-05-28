@@ -48,7 +48,7 @@ SliverAppBar sliverHeader(IconData icon, String title, Function onPressed) {
       child: FlexibleSpaceBar(
         title: Text(
           title,
-          style: TextStyle(fontSize: 25.0),
+          style: TextStyle(fontSize: 22.0),
         ),
       ),
     ),
