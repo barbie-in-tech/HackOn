@@ -316,8 +316,8 @@ class _ShoppingCartState extends State<ShoppingCart> {
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                   colors: [
-                                    Colors.deepPurpleAccent,
-                                    Colors.pinkAccent
+                                    Color(0xff693DC5),
+                                    Color(0xffFF88E2),
                                   ])),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),

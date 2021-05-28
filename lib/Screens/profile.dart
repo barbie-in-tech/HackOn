@@ -102,8 +102,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        Color.fromRGBO(158, 111, 255, 1),
-                        Color.fromRGBO(255, 136, 226, 1),
+                        Color(0xff693DC5),
+                        Color(0xffFF88E2),
                       ],
                     ),
                     borderRadius: BorderRadius.only(
