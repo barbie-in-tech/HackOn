@@ -14,7 +14,9 @@ class _ClosetScreenState extends State<ClosetScreen> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader("All Closets"),
+          sliverHeader(Icons.navigate_before, "All Closet", () {
+            Navigator.pop(context);
+          }),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
@@ -24,7 +26,6 @@ class _ClosetScreenState extends State<ClosetScreen> {
                       height: 20.0,
                     ),
                     Container(
-                      //color: Color(0xFF00BDBD).withOpacity(0.2),
                       width: 360.0,
                       height: 100.0,
                       decoration: BoxDecoration(
