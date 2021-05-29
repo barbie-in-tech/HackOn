@@ -59,7 +59,43 @@ const kDrawerTextStyle = TextStyle(
 String homeScreen = "/homeScreen";
 String proDetail = "/productDetailScreen";
 String closetScreen = "/closetScreen";
-String shoppingcart = "/cart.dart";
-String login = "/login.dart";
-String profile = "/profile.dart";
-String mainScreen = "/main_Screen.dart";
+String shoppingcart = "/cart";
+String login = "/authScreen";
+String profile = "/profile";
+String mainScreen = "/main_Screen";
+String categories = "/categories";
+String addProduct = "AddProduct_Screen";
+
+SnackBar snackBar(
+  BuildContext ctx,
+  String message,
+  String actionLabel,
+  Function press,
+) {
+  final snackBar = SnackBar(
+    content: Text(message),
+    action: SnackBarAction(
+      label: actionLabel,
+      onPressed: press,
+    ),
+  );
+  return snackBar;
+}
+
+void errorDialog(BuildContext ctx, String errorMessage) {
+  showDialog(
+    context: ctx,
+    builder: (ctx) => AlertDialog(
+      title: Text("An ERROR Occurred"),
+      content: Text(errorMessage),
+      actions: [
+        TextButton(
+          child: Text("OK"),
+          onPressed: () {
+            Navigator.of(ctx).pop();
+          },
+        ),
+      ],
+    ),
+  );
+}

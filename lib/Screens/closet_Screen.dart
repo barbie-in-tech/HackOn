@@ -1,6 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/closet_closet_screen.dart';
+//import 'package:thrifter_hackon/utilities/db_object.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 class ClosetScreen extends StatefulWidget {
@@ -25,20 +26,35 @@ class _ClosetScreenState extends State<ClosetScreen> {
                     SizedBox(
                       height: 20.0,
                     ),
-                    Container(
-                   width: MediaQuery.of(context).size.width * 0.85,
-          height: MediaQuery.of(context).size.height * 0.09,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF00BDBD).withOpacity(0.2),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
+                    MaterialButton(
+                      elevation: 5.0,
+                      child: Container(
+                        width: 360.0,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF00BDBD).withOpacity(0.2),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(5),
+                          ),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Rahul's Closet",
+                            style: TextStyle(fontSize: 40.0),
+                          ),
                         ),
                       ),
-                    ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ClomsetScreen()));
+                      },
+                    )
                   ],
                 );
               },
-              childCount: 20,
+              childCount: 1,
             ),
           ),
         ],
@@ -46,25 +62,3 @@ class _ClosetScreenState extends State<ClosetScreen> {
     );
   }
 }
-
-/*final _firestore = FirebaseFirestore.instance;
-class ClosetStream extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('closets').snapshots(),
-      //ignore: missing_return
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return Center(
-            child: CircularProgressIndicator(
-              backgroundColor: Colors.lightBlueAccent,
-            ),
-          )
-        }
-      },
-    );
-  }
-}
-*/
-

@@ -85,7 +85,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      //TODO: App Header
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -128,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           "Name",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 40,
+                            fontSize: 30,
                             fontWeight: FontWeight.w800,
                           ),
                           textAlign: TextAlign.justify,
