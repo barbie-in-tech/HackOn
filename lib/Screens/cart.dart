@@ -17,7 +17,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          sliverHeader(Icons.navigate_before, 'Shopping Cart', () {
+          sliverHeader(context, Icons.navigate_before, 'Shopping Cart', () {
             Navigator.pop(context);
           }),
           SliverList(
