@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import "package:provider/provider.dart";
+import 'package:thrifter_hackon/Provider/authProvider.dart';
 import 'package:thrifter_hackon/constants.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
@@ -44,6 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
+    final authData = Provider.of<AuthData>(context);
+    var currentUserData = authData.currentUserData;
     return GestureDetector(
       onTap: isDrawerOpen ? drawerHandler : null,
       child: AnimatedContainer(
@@ -65,7 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: CustomScrollView(
           slivers: [
-            sliverHeader(Icons.menu, "Hey Random!", drawerHandler),
+            sliverHeader(
+              Icons.menu,
+              authData.auth.currentUser!=null?"Hey ${currentUserData["Name"]}!":"Hey Random!",
+              drawerHandler,
+            ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
