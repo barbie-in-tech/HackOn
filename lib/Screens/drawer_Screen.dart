@@ -31,6 +31,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
           children: [
             Row(
               children: [
+                SizedBox(
+                  height: 30.0,
+                ),
                 CircleAvatar(
                   radius: 25,
                   foregroundImage: NetworkImage(
@@ -87,7 +90,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ),
                   MenuOption(
                     icon: Icons.star,
-                    title: 'All CLosets',
+                    title: 'All Closets',
                     onTap: () {
                       Navigator.pushNamed(context, closetScreen);
                     },
