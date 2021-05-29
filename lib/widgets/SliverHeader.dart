@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/cart.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 
-SliverAppBar sliverHeader(IconData icon, String title, Function onPressed) {
+SliverAppBar sliverHeader(
+    BuildContext context, IconData icon, String title, Function onPressed) {
   return SliverAppBar(
     backgroundColor: Colors.purple,
     shape: ContinuousRectangleBorder(
@@ -24,6 +26,8 @@ SliverAppBar sliverHeader(IconData icon, String title, Function onPressed) {
       IconButton(
           icon: Icon(Icons.shopping_cart_outlined),
           onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ShoppingCart()));
             //Shop
           }),
     ],

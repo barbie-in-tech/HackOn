@@ -40,6 +40,7 @@ class _AddProductState extends State<AddProduct> {
         body: CustomScrollView(
           slivers: [
             sliverHeader(
+              context,
               Icons.navigate_before,
               "Add Product Details",
               () => Navigator.of(context).pop(),

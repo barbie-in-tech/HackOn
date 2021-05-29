@@ -6,7 +6,6 @@ import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 bool _isVisible1 = false;
 bool _isVisible2 = false;
 
-
 class Categories extends StatefulWidget {
   @override
   _CategoriesState createState() => _CategoriesState();
@@ -18,7 +17,7 @@ class _CategoriesState extends State<Categories> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "Categories", () {
+          sliverHeader(context, Icons.navigate_before, "Categories", () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -58,10 +57,9 @@ class _CategoriesState extends State<Categories> {
                             setState(() {
                               _isVisible2 = !_isVisible2;
                             });
-                  
                           },
                         ),
-                            Visibility(
+                        Visibility(
                           visible: _isVisible2,
                           child: _isVisible2 ? WomenSubCategory() : Container(),
                         ),
@@ -74,15 +72,12 @@ class _CategoriesState extends State<Categories> {
                       iconColor: Colors.transparent,
                       category: "Unisex",
                       onPressed: () {
-                        setState(() {
-                        
-                        });
+                        setState(() {});
                       },
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.3,
                     ),
-                    
                   ],
                 );
               },
@@ -99,118 +94,144 @@ class MenSubCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-  child: Column(
-    children: [
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Jeans", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
+      child: Column(
+        children: [
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Jeans",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "T-shirts and shirts",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Jackets",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Shoes",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Accessories",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+        ],
       ),
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("T-shirts and shirts", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-      
-       MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Jackets", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-      
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Shoes", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-     
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Accessories", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-    ],
-  ),
-
       width: MediaQuery.of(context).size.width * 0.85,
     );
   }
 }
+
 class WomenSubCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-  child: Column(
-    children: [
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Tops", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
+      child: Column(
+        children: [
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Tops",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Jeans",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Ethnic Wear",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Jumpsuits",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Shoes",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                "Purses",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+              ),
+            ),
+          ),
+        ],
       ),
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Jeans", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-      
-       MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Ethnic Wear", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Jumpsuits", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Shoes", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-     
-      MaterialButton(
-        onPressed: (){
-
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          child: Text("Purses", textAlign: TextAlign.left , style: TextStyle(fontSize: 15.0, color: Colors.black54),),),
-      ),
-      
-    ],
-  ),
-
       width: MediaQuery.of(context).size.width * 0.85,
     );
   }
