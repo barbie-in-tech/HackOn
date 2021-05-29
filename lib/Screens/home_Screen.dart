@@ -20,8 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void drawerHandler() {
     setState(() {
       if (!isDrawerOpen) {
-        xOffset = 230;
-        yOffset = 150;
+        xOffset = MediaQuery.of(context).size.width * 0.53;
+        yOffset = MediaQuery.of(context).size.height * 0.2;
 
         scaleFactor = 0.7;
         isDrawerOpen = true;
@@ -38,15 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> titles = [
     'Men',
     'Women',
-    'Kids',
-    'something',
-    'something2',
+    'Shoes',
+    'Accessories',
+    'Unisex',
   ];
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     final authData = Provider.of<AuthData>(context);
+    authData.getCurrentUserData();
     var currentUserData = authData.currentUserData;
     return GestureDetector(
       onTap: isDrawerOpen ? drawerHandler : null,
@@ -71,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
           slivers: [
             sliverHeader(
               Icons.menu,
-              authData.auth.currentUser!=null?"Hey ${currentUserData["Name"]}!":"Hey Random!",
+              authData.currentUserData.isNotEmpty?"Hey ${currentUserData["Name"]}!":"Hey Random!",
               drawerHandler,
             ),
             SliverList(
@@ -114,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       ThriftStoreDescriptionBox(
                         thriftDescription:
-                            'Some Text About Thrift Stores in Multiple animated container',
+                            '"It takes 650 gallons of water to make one new cotton \n t-shirt."',
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(
@@ -142,28 +143,30 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           GridContainer(
                             category: 'party_wear.jpg',
-                            title: 'PARTY WEAR',
+                            title: 'JEANS',
                             onPressed: () {
                               print('here');
                             },
                           ),
                           GridContainer(
                             category: 'party_wear.jpg',
-                            title: 'PARTY WEAR',
+                            title: 'ETHNIC',
                             onPressed: () {
                               print('here');
                             },
                           ),
                           GridContainer(
                             category: 'party_wear.jpg',
-                            title: 'PARTY WEAR',
+                            title: 'SHOES',
                             onPressed: () {
                               print('here');
                             },
                           ),
                         ],
-                      )
-                    ],
+                      ),
+
+                      MaterialButton(child: ThriftStoreDescriptionBox(thriftDescription: "Become a thrifter NOW!",), onPressed: (){},),
+                      SizedBox(height: 100,),]
                   );
                 },
                 childCount: 1,
@@ -227,7 +230,7 @@ class ThriftStoreDescriptionBox extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
         padding: EdgeInsets.all(30.0),
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         decoration: kDescriptiveBoxStyle,
         child: Text(
           thriftDescription,

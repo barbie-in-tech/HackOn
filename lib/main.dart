@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:thrifter_hackon/Screens/AuthScreen.dart';
 import 'package:thrifter_hackon/Screens/ProductDetail_Screen.dart';
 import 'package:thrifter_hackon/Screens/closet_Screen.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
-import 'package:thrifter_hackon/Screens/AuthScreen.dart';
 import 'package:thrifter_hackon/Screens/main_Screen.dart';
 import 'package:thrifter_hackon/Screens/profile.dart';
 import 'package:thrifter_hackon/constants.dart';
@@ -18,12 +19,15 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
-// var userId;
-
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+      ),
+    );
     // print(userId);
     return MultiProvider(
       providers: [
