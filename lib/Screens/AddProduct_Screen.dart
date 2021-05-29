@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-//import 'package:thrifter_hackon/widgets/ImagePicker.dart';
+import 'package:thrifter_hackon/widgets/ImagePicker.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 import '../main.dart';
@@ -57,7 +57,7 @@ class _AddProductState extends State<AddProduct> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          //ImgPicker(_imagePicked),
+                          ImgPicker(_imagePicked),
                           TextFormField(
                             decoration: InputDecoration(
                               hintText: "Closet Name",
