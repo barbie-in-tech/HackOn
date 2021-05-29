@@ -38,6 +38,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
           children: [
             Row(
               children: [
+                SizedBox(
+                  height: 30.0,
+                ),
                 CircleAvatar(
                   radius: 25,
                   foregroundImage: NetworkImage(
