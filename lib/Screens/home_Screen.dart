@@ -18,8 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void drawerHandler() {
     setState(() {
       if (!isDrawerOpen) {
-        xOffset = 230;
-        yOffset = 150;
+        xOffset = MediaQuery.of(context).size.width * 0.53;
+        yOffset = MediaQuery.of(context).size.height * 0.2;
 
         scaleFactor = 0.7;
         isDrawerOpen = true;

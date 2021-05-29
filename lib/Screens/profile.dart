@@ -102,8 +102,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
                       colors: [
-                        Color.fromRGBO(158, 111, 255, 1),
-                        Color.fromRGBO(255, 136, 226, 1),
+                        Color(0xff693DC5),
+                        Color(0xffFF88E2),
                       ],
                     ),
                     borderRadius: BorderRadius.only(
@@ -113,19 +113,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   child: Container(
                     margin: EdgeInsets.all(5.0),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 50.0),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
                     height: mediaQuery.height * 0.4,
                     width: double.infinity,
                     alignment: Alignment.topLeft,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        SizedBox(
+                          height: mediaQuery.height * 0.03,
+                        ),
                         Text(
                           "Name",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 45,
+                            fontSize: 40,
                             fontWeight: FontWeight.w800,
                           ),
                           textAlign: TextAlign.justify,
@@ -142,6 +145,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ],
                     ),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: IconButton(
+                      icon: Icon(
+                        Icons.navigate_before,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
                 ),
                 Positioned(
                   left: mediaQuery.width * 0.36,

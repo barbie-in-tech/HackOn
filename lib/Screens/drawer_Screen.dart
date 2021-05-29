@@ -62,7 +62,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ],
             ),
             Container(
-              width: 200.0,
+              width: MediaQuery.of(context).size.width * 0.5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
