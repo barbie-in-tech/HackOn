@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/Screens/ProductDetail_Screen.dart';
 import 'package:thrifter_hackon/Screens/closet_Screen.dart';
@@ -5,13 +6,18 @@ import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/Screens/main_Screen.dart';
 import 'package:thrifter_hackon/Screens/profile.dart';
 import 'package:thrifter_hackon/constants.dart';
+import 'package:flutter/services.dart';
 
 import './Screens/login.dart';
 import 'Screens/cart.dart';
-import 'package:flutter/services.dart';
-void main() {
-  runApp(MyApp());
+
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 }
+
+
 
 var userId;
 
