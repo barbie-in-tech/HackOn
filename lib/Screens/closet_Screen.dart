@@ -10,8 +10,6 @@ class ClosetScreen extends StatefulWidget {
 }
 
 class _ClosetScreenState extends State<ClosetScreen> {
-  //List Users = ;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
