@@ -29,8 +29,8 @@ class _ClosetScreenState extends State<ClosetScreen> {
                     MaterialButton(
                       elevation: 5.0,
                       child: Container(
-                        width: 360.0,
-                        height: 100.0,
+                        width: MediaQuery.of(context).size.width*0.9,
+                        height: MediaQuery.of(context).size.height*0.1,
                         decoration: BoxDecoration(
                           color: Color(0xFF00BDBD).withOpacity(0.2),
                           borderRadius: BorderRadius.all(
@@ -40,7 +40,7 @@ class _ClosetScreenState extends State<ClosetScreen> {
                         child: Center(
                           child: Text(
                             "Rahul's Closet",
-                            style: TextStyle(fontSize: 40.0),
+                            style: TextStyle(fontSize: 20.0),
                           ),
                         ),
                       ),
