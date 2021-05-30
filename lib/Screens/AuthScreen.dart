@@ -120,7 +120,6 @@ class _AuthCardState extends State<AuthCard>
     );
   }
 
-
   void _switchAuthMode() {
     if (_authMode == AuthMode.Login) {
       setState(() {
@@ -157,7 +156,6 @@ class _AuthCardState extends State<AuthCard>
           pass: _authData['password'],
           ctx: context,
         );
-        await Navigator.of(context).pushReplacementNamed(mainScreen);
         setState(() {
           if (!isDrawerOpen) {
             xOffset = 230;

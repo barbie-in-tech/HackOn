@@ -104,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               return HorizontalListButton(
                                 text: titles[index],
 
+
                                 onPressed: () {
                                   Navigator.pushNamed(context, categories);
                                 },
@@ -146,6 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'TOPS',
                               onPressed: () {
                                 print('here');
+
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -154,6 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'JEANS',
                               onPressed: () {
                                 print('here');
+
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -170,6 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'SHOES',
                               onPressed: () {
                                 print('here');
+
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -179,6 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: ThriftStoreDescriptionBox(
                             thriftDescription: "Become a thrifter NOW!",
                           ),
+
                        
                           onPressed: () {
                             Navigator.pushNamed(

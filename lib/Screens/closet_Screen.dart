@@ -1,9 +1,9 @@
-import 'dart:developer';
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/Screens/closet_closet_screen.dart';
-import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 import 'package:thrifter_hackon/utilities/db_object.dart';
+import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 class ClosetScreen extends StatefulWidget {
   @override
@@ -40,8 +40,8 @@ class _ClosetScreenState extends State<ClosetScreen> {
                       MaterialButton(
                         elevation: 5.0,
                         child: Container(
-                         width: MediaQuery.of(context).size.width*0.9,
-                        height: MediaQuery.of(context).size.height*0.1,
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: MediaQuery.of(context).size.height * 0.1,
                           decoration: BoxDecoration(
                             color: Color(0xFF00BDBD).withOpacity(0.2),
                             borderRadius: BorderRadius.all(
@@ -52,9 +52,11 @@ class _ClosetScreenState extends State<ClosetScreen> {
                             child: Text(
                               users[index].closetName,
                               style: TextStyle(
-                                  fontSize: 20,),
+                                fontSize: 20,
+                              ),
                             ),
-               
+                          ),
+                        ),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -63,7 +65,7 @@ class _ClosetScreenState extends State<ClosetScreen> {
                                       RouteSettings(arguments: users[index]),
                                   builder: (context) => ClomsetScreen()));
                         },
-                      )
+                      ),
                     ],
                   ),
                 );

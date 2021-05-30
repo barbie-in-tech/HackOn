@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 import 'package:thrifter_hackon/widgets/Buttons.dart';
+import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 // Map<String, dynamic> items = {"0" : "assest/images/men1.jpg", "1" :"assest/images/jean2.jpeg" };
 List items = ["assest/images/men1.jpg", "assest/images/jean2.jpeg"];
@@ -18,7 +17,7 @@ class _MenJeansState extends State<MenJeans> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "\t\t\tJeans", () {
+          sliverHeader(context, Icons.navigate_before, "\t\t\tJeans", () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -102,7 +101,7 @@ class _MenShoesState extends State<MenShoes> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "\t\t\tShoes", () {
+          sliverHeader(context, Icons.navigate_before, "\t\t\tShoes", () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -144,7 +143,7 @@ class _MenShirtState extends State<MenShirt> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "\t\t\tShirts", () {
+          sliverHeader(context, Icons.navigate_before, "\t\t\tShirts", () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -228,7 +227,7 @@ class _MenAccState extends State<MenAcc> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "Accesories", () {
+          sliverHeader(context, Icons.navigate_before, "Accesories", () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -270,7 +269,7 @@ class _MenJacketState extends State<MenJacket> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "Jackets", () {
+          sliverHeader(context, Icons.navigate_before, "Jackets", () {
             Navigator.pop(context);
           }),
           SliverList(

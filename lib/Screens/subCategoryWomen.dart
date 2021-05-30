@@ -18,7 +18,7 @@ class _WomenJeansState extends State<WomenJeans> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "\t\t\tJeans", () {
+          sliverHeader(context,Icons.navigate_before, "\t\t\tJeans", () {
             Navigator.pop(context);
           }),
           SliverList(
