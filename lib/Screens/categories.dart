@@ -20,7 +20,7 @@ class _CategoriesState extends State<Categories> {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, "Categories", () {
+          sliverHeader(context, Icons.navigate_before, "Categories", () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -104,6 +104,7 @@ class MenSubCategory extends StatelessWidget {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => MenJeans()));
             },
+
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -114,6 +115,7 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
+
             onPressed: () {
               Navigator.push(
                 context,
@@ -132,6 +134,7 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
+
             onPressed: () {
               Navigator.push(
                 context,
@@ -150,6 +153,7 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
+
             onPressed: () {
               Navigator.push(
                 context,
@@ -168,6 +172,7 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
+
             onPressed: () {
               Navigator.push(
                 context,
@@ -210,6 +215,7 @@ class WomenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
+
             onPressed: () {
               Navigator.push(
                 context,

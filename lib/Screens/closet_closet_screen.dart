@@ -7,15 +7,15 @@ import 'package:thrifter_hackon/utilities/db_object.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 class ClomsetScreen extends StatelessWidget {
-  final user = User();
-
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context).settings.arguments as User;
+    ;
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          sliverHeader(Icons.navigate_before, user.closetName, () {
+          sliverHeader(context, Icons.navigate_before, user.closetName, () {
             Navigator.pop(context);
           }),
           SliverGrid(
