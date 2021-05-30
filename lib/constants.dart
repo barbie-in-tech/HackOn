@@ -63,13 +63,15 @@ String shoppingcart = "/cart";
 String login = "/authScreen";
 String profile = "/profile";
 String mainScreen = "/main_Screen";
+String categories = "/categories";
+String addProduct = "AddProduct_Screen";
 
 SnackBar snackBar(
-    BuildContext ctx,
-    String message,
-    String actionLabel,
-    Function press,
-    ) {
+  BuildContext ctx,
+  String message,
+  String actionLabel,
+  Function press,
+) {
   final snackBar = SnackBar(
     content: Text(message),
     action: SnackBarAction(
@@ -97,4 +99,3 @@ void errorDialog(BuildContext ctx, String errorMessage) {
     ),
   );
 }
-

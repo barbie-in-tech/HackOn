@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:thrifter_hackon/Screens/AddProduct_Screen.dart';
 import 'package:thrifter_hackon/Screens/AuthScreen.dart';
 import 'package:thrifter_hackon/Screens/ProductDetail_Screen.dart';
+import 'package:thrifter_hackon/Screens/categories.dart';
 import 'package:thrifter_hackon/Screens/closet_Screen.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/Screens/main_Screen.dart';
@@ -49,6 +51,8 @@ class MyApp extends StatelessWidget {
           login: (_) => AuthScreen(),
           profile: (_) => ProfileScreen(),
           mainScreen: (_) => MainScreen(),
+          categories: (_) => Categories(),
+          addProduct: (_) => AddProduct(),
         },
       ),
     );

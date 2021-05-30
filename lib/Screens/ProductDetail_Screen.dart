@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:thrifter_hackon/widgets/Buttons.dart';
+import 'package:thrifter_hackon/constants.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   @override
@@ -33,8 +34,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         begin: Alignment.centerLeft,
                         end: Alignment.centerRight,
                         colors: [
-                          Color.fromRGBO(158, 111, 255, 1),
-                          Color.fromRGBO(255, 136, 226, 1),
+                          Color(0xff693DC5),
+                          Color(0xffFF88E2),
                         ],
                       ),
                       borderRadius: BorderRadius.only(
@@ -50,6 +51,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.navigate_before,
+                          color: Colors.white,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
                   ),
                   Positioned(
                     top: 150.0,
@@ -173,11 +186,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               buttonText: "BUY NOW",
               textColor: Color.fromRGBO(0, 189, 189, 1),
               buttonColor: Color.fromRGBO(0, 189, 189, 0.2),
+              onTap: () {
+                Navigator.pushNamed(context, shoppingcart);
+              },
             ),
             Buttons(
               buttonText: "ADD TO CART",
               textColor: Colors.white,
               buttonColor: Color.fromRGBO(0, 189, 189, 1),
+              onTap: () {
+                Navigator.pushNamed(context, shoppingcart);
+              },
             ),
           ],
         ),

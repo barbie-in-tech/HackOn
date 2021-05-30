@@ -103,7 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (BuildContext context, int index) {
                               return HorizontalListButton(
                                 text: titles[index],
-                                onPressed: () {},
+
+                                onPressed: () {
+                                  Navigator.pushNamed(context, categories);
+                                },
                               );
                             },
                             separatorBuilder:
@@ -143,6 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'TOPS',
                               onPressed: () {
                                 print('here');
+                                Navigator.pushNamed(context, closetScreen);
                               },
                             ),
                             GridContainer(
@@ -150,6 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'JEANS',
                               onPressed: () {
                                 print('here');
+                                Navigator.pushNamed(context, closetScreen);
                               },
                             ),
                             GridContainer(
@@ -157,6 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'ETHNIC',
                               onPressed: () {
                                 print('here');
+                                Navigator.pushNamed(context, closetScreen);
                               },
                             ),
                             GridContainer(
@@ -164,6 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               title: 'SHOES',
                               onPressed: () {
                                 print('here');
+                                Navigator.pushNamed(context, closetScreen);
                               },
                             ),
                           ],
@@ -172,7 +179,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: ThriftStoreDescriptionBox(
                             thriftDescription: "Become a thrifter NOW!",
                           ),
-                          onPressed: () {},
+                       
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              addProduct,
+                            );
+                          },
                         ),
                         SizedBox(
                           height: 100,

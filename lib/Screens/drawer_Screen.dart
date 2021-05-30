@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:thrifter_hackon/Screens/categories.dart';
-
+import 'home_Screen.dart';
 import 'package:thrifter_hackon/Screens/home_Screen.dart';
 import 'package:thrifter_hackon/constants.dart';
 
@@ -53,7 +53,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'Name',
+                      "Name",
                       style: kHeadingTextStyle.copyWith(
                         color: Colors.white,
                         fontSize: 40,
@@ -88,7 +88,10 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     icon: Icons.category,
                     title: 'Categories',
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Categories()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Categories()));
                     },
                   ),
                   MenuOption(
