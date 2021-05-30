@@ -74,6 +74,7 @@ class AuthData with ChangeNotifier {
       // print(userCredential.user.email);
       await getCurrentUserData();
       print(currentUserData);
+      Navigator.of(ctx).pushReplacementNamed(mainScreen);
     } on FirebaseAuthException catch (e) {
       String errMessage = "Unable To Authenticate!";
       if (e.code == 'user-not-found') {
@@ -100,8 +101,7 @@ class AuthData with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getCurrentUserData(
-      {String collection = "Users"}) async {
+  Future<void> getCurrentUserData({String collection = "Users"}) async {
     var data;
     try {
       var currentData = await firestore

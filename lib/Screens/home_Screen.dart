@@ -72,102 +72,111 @@ class _HomeScreenState extends State<HomeScreen> {
           slivers: [
             sliverHeader(
               Icons.menu,
-              authData.currentUserData.isNotEmpty?"Hey ${currentUserData["Name"]}!":"Hey Random!",
+              authData.currentUserData.isNotEmpty
+                  ? "Hey ${currentUserData["Name"]}!"
+                  : "Hey Random!",
               drawerHandler,
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      SizedBox(
-                        height: mediaQuery.height * 0.02,
-                      ),
-                      Container(
-                        alignment: Alignment.center,
-                        height: kHorizontalListHeight,
-                        child: ListView.separated(
-                          itemCount: 5,
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox(
+                          height: mediaQuery.height * 0.02,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          height: kHorizontalListHeight,
+                          child: ListView.separated(
+                            itemCount: 5,
+                            shrinkWrap: true,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 25.0,
+                              vertical: 5.0,
+                            ),
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (BuildContext context, int index) {
+                              return HorizontalListButton(
+                                text: titles[index],
+                                onPressed: () {},
+                              );
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return SizedBox(
+                                width: mediaQuery.width * 0.05,
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: mediaQuery.height * 0.01,
+                        ),
+                        ThriftStoreDescriptionBox(
+                          thriftDescription:
+                              '"It takes 650 gallons of water to make one new cotton \n t-shirt."',
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 5.0),
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            'Check these out!',
+                            style: kHeadingTextStyle,
+                          ),
+                        ),
+                        GridView.count(
                           shrinkWrap: true,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 25.0,
-                            vertical: 5.0,
-                          ),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (BuildContext context, int index) {
-                            return HorizontalListButton(
-                              text: titles[index],
-                              onPressed: () {},
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return SizedBox(
-                              width: mediaQuery.width * 0.05,
-                            );
-                          },
+                          physics: NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.all(20.0),
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          crossAxisCount: 2,
+                          children: [
+                            GridContainer(
+                              category: 'tops.jpeg',
+                              title: 'TOPS',
+                              onPressed: () {
+                                print('here');
+                              },
+                            ),
+                            GridContainer(
+                              category: 'party_wear.jpg',
+                              title: 'JEANS',
+                              onPressed: () {
+                                print('here');
+                              },
+                            ),
+                            GridContainer(
+                              category: 'party_wear.jpg',
+                              title: 'ETHNIC',
+                              onPressed: () {
+                                print('here');
+                              },
+                            ),
+                            GridContainer(
+                              category: 'party_wear.jpg',
+                              title: 'SHOES',
+                              onPressed: () {
+                                print('here');
+                              },
+                            ),
+                          ],
                         ),
-                      ),
-                      SizedBox(
-                        height: mediaQuery.height * 0.01,
-                      ),
-                      ThriftStoreDescriptionBox(
-                        thriftDescription:
-                            '"It takes 650 gallons of water to make one new cotton \n t-shirt."',
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 20.0, vertical: 5.0),
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          'Check these out!',
-                          style: kHeadingTextStyle,
+                        MaterialButton(
+                          child: ThriftStoreDescriptionBox(
+                            thriftDescription: "Become a thrifter NOW!",
+                          ),
+                          onPressed: () {},
                         ),
-                      ),
-                      GridView.count(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.all(20.0),
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        crossAxisCount: 2,
-                        children: [
-                          GridContainer(
-                            category: 'tops.jpeg',
-                            title: 'TOPS',
-                            onPressed: () {
-                              print('here');
-                            },
-                          ),
-                          GridContainer(
-                            category: 'party_wear.jpg',
-                            title: 'JEANS',
-                            onPressed: () {
-                              print('here');
-                            },
-                          ),
-                          GridContainer(
-                            category: 'party_wear.jpg',
-                            title: 'ETHNIC',
-                            onPressed: () {
-                              print('here');
-                            },
-                          ),
-                          GridContainer(
-                            category: 'party_wear.jpg',
-                            title: 'SHOES',
-                            onPressed: () {
-                              print('here');
-                            },
-                          ),
-                        ],
-                      ),
-
-                      MaterialButton(child: ThriftStoreDescriptionBox(thriftDescription: "Become a thrifter NOW!",), onPressed: (){},),
-                      SizedBox(height: 100,),]
-                  );
+                        SizedBox(
+                          height: 100,
+                        ),
+                      ]);
                 },
                 childCount: 1,
               ),
