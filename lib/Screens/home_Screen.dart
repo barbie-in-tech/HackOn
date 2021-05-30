@@ -71,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: CustomScrollView(
           slivers: [
             sliverHeader(
+              context,
               Icons.menu,
               authData.currentUserData.isNotEmpty
                   ? "Hey ${currentUserData["Name"]}!"
@@ -102,6 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (BuildContext context, int index) {
                               return HorizontalListButton(
                                 text: titles[index],
+
                                 onPressed: () {
                                   Navigator.pushNamed(context, categories);
                                 },
@@ -143,6 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               category: 'tops.jpeg',
                               title: 'TOPS',
                               onPressed: () {
+                                print('here');
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -150,6 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               category: 'party_wear.jpg',
                               title: 'JEANS',
                               onPressed: () {
+                                print('here');
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -157,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               category: 'party_wear.jpg',
                               title: 'ETHNIC',
                               onPressed: () {
+                                print('here');
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -164,6 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               category: 'party_wear.jpg',
                               title: 'SHOES',
                               onPressed: () {
+                                print('here');
                                 Navigator.pushNamed(context, closetScreen);
                               },
                             ),
@@ -173,6 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: ThriftStoreDescriptionBox(
                             thriftDescription: "Become a thrifter NOW!",
                           ),
+                       
                           onPressed: () {
                             Navigator.pushNamed(
                               context,

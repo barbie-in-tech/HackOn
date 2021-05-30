@@ -22,7 +22,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: mediaQuery.height * 0.4,
+              height: mediaQuery.height * 0.6,
               child: Stack(
                 children: [
                   Container(
@@ -65,6 +65,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         }),
                   ),
                   Positioned(
+                    top: 150.0,
                     left: 20,
                     bottom: 0,
                     child: Container(
@@ -75,17 +76,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Image.network(
                           args['productImageURL'][selectedPreviewImage],
                           fit: BoxFit.fill,
+                          height: mediaQuery.height*0.5,
                           width: mediaQuery.width * 0.75,
                           scale: 0.7,
                         ),
                       ),
-                      height: mediaQuery.height * 0.2,
+                      height: mediaQuery.height * 0.5,
                       width: mediaQuery.width * 0.75,
                     ),
                   ),
                 ],
               ),
             ),
+            SizedBox(),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

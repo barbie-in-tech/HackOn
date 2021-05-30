@@ -55,6 +55,7 @@ flutter:
 
   assets:
     - assest/images/cloth_product.jpg
+    - assest/images/
     - images/
   #   - images/a_dot_ham.jpeg
 

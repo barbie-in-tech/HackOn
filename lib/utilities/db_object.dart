@@ -36,17 +36,11 @@ class User {
   String closetName;
   bool isSeller;
 
-  User({
-    this.Email = 'rahul123@gmail.com',
-    this.Name = 'Rahul',
-    this.closetName = "Rahul's Closet",
-    this.isSeller = true,
-    this.Products = userProducts,
-  });
+  User(
+    this.Email,
+    this.Name,
+    this.closetName,
+    this.isSeller,
+    this.Products,
+  );
 }
-
-class AllUsers {
-  List Users;
-}
-
-//List Users = [user1, user2, user3, user4];
