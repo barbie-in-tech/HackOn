@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:thrifter_hackon/Screens/subCategoryWomen.dart';
+
+import 'package:thrifter_hackon/Screens/subCatergoryMen.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
 bool _isVisible1 = false;
@@ -97,7 +100,11 @@ class MenSubCategory extends StatelessWidget {
       child: Column(
         children: [
           MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MenJeans()));
+            },
+
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -108,7 +115,15 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MenShirt(),
+                ),
+              );
+            },
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -119,7 +134,15 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MenJacket(),
+                ),
+              );
+            },
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -130,7 +153,15 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MenShoes(),
+                ),
+              );
+            },
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -141,7 +172,15 @@ class MenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MenAcc(),
+                ),
+              );
+            },
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -176,7 +215,15 @@ class WomenSubCategory extends StatelessWidget {
             ),
           ),
           MaterialButton(
-            onPressed: () {},
+
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => WomenJeans(),
+                ),
+              );
+            },
             child: Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text(
@@ -256,12 +303,12 @@ class CategoryName extends StatelessWidget {
               children: [
                 Text(
                   category,
-                  style: TextStyle(fontSize: 17.0, color: Colors.black),
+                  style: TextStyle(fontSize: 15.0, color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
                 Icon(
                   Icons.arrow_drop_down,
-                  size: 34.0,
+                  size: 32.0,
                   color: iconColor,
                 ),
               ],
