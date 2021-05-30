@@ -17,7 +17,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          sliverHeader(Icons.navigate_before, 'Shopping Cart', () {
+          sliverHeader(context, Icons.navigate_before, 'Shopping Cart', () {
             Navigator.pop(context);
           }),
           SliverList(
@@ -273,7 +273,7 @@ class _ShoppingCartState extends State<ShoppingCart> {
                       ),
                     ),
                     ListTile(
-                      title: const Text('Paytm'),
+                      title: const Text('Cash on Delivery'),
                       leading: Radio<SingingCharacter>(
                         value: SingingCharacter.paytm,
                         groupValue: _character,
@@ -284,18 +284,18 @@ class _ShoppingCartState extends State<ShoppingCart> {
                         },
                       ),
                     ),
-                    ListTile(
-                      title: const Text('UPI'),
-                      leading: Radio<SingingCharacter>(
-                        value: SingingCharacter.upi,
-                        groupValue: _character,
-                        onChanged: (SingingCharacter value) {
-                          setState(() {
-                            _character = value;
-                          });
-                        },
-                      ),
-                    ),
+                    // ListTile(
+                    //   title: const Text('UPI'),
+                    //   leading: Radio<SingingCharacter>(
+                    //     value: SingingCharacter.upi,
+                    //     groupValue: _character,
+                    //     onChanged: (SingingCharacter value) {
+                    //       setState(() {
+                    //         _character = value;
+                    //       });
+                    //     },
+                    //   ),
+                    // ),
                     ListTile(
                       title: const Text('Bank Transfer'),
                       leading: Radio<SingingCharacter>(
