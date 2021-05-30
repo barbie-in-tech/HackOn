@@ -1,12 +1,18 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 import '../constants.dart';
 
 class AuthData with ChangeNotifier {
   FirebaseAuth _auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   FirebaseAuth get auth {
     return _auth;
@@ -115,5 +121,57 @@ class AuthData with ChangeNotifier {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> addProduct({
+    BuildContext ctx,
+    String closetName,
+    String productName,
+    double price,
+    String productDescription,
+    String productSize,
+    String productColor,
+    String proCategory,
+    File image,
+  }) async {
+    // print(currentUserOutletId);
+    try {
+      final ref =
+          storage.ref().child("product_images").child(_auth.currentUser.uid);
+
+      await ref.putFile(image);
+
+      final url = await ref.getDownloadURL();
+
+      await firestore.collection("Users").doc(_auth.currentUser.uid).update({
+        "products": FieldValue.arrayUnion([
+          {
+            "productId": Uuid().v4(),
+            "productName": productName,
+            "productPrice": price,
+            "productDescription": productDescription,
+            "productSize": productSize,
+            "productColor": productColor,
+            "proCategory": proCategory,
+            "productImgUrl": url,
+          }
+        ]),
+        "closetName": closetName,
+        "isSeller": "true",
+      });
+      ScaffoldMessenger.of(ctx).showSnackBar(
+        snackBar(
+          ctx,
+          "Product Added",
+          "View",
+          () {},
+        ),
+      );
+    } catch (err) {
+      // print(err);
+      String errMsg = "Unable To Add Product!";
+      errorDialog(ctx, errMsg);
+    }
+    notifyListeners();
   }
 }

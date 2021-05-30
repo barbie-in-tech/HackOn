@@ -1,10 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thrifter_hackon/widgets/ImagePicker.dart';
 import 'package:thrifter_hackon/widgets/SliverHeader.dart';
 
-import '../main.dart';
+import '../Provider/authProvider.dart';
+import '../constants.dart';
 
 class AddProduct extends StatefulWidget {
   @override
@@ -12,6 +14,8 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+  bool _isLoading = false;
+
   final List productCategories = [
     "Men",
     "Women",
@@ -22,114 +26,248 @@ class _AddProductState extends State<AddProduct> {
   final _addFormKey = GlobalKey<FormState>();
 
   File imagePick;
+  String closetName = "";
+  String productName = "";
+  double price;
+  String productDescription = "";
+  String productSize = "";
+  String productColor = "";
+  String proCategory;
 
   void _imagePicked(File image) {
     imagePick = image;
   }
 
-  String proCategory;
-
   @override
   Widget build(BuildContext context) {
-    // print(userId);
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            sliverHeader(
-              context,
-              Icons.navigate_before,
-              "Add Product Details",
-              () => Navigator.of(context).pop(),
+    final authData = Provider.of<AuthData>(context);
+
+    void validate() async {
+      if (!_addFormKey.currentState.validate()) {
+        // print("Invalid");
+        return;
+      }
+      _addFormKey.currentState.save();
+      if (imagePick == null)
+        errorDialog(context, "Submit An Image");
+      else {
+        setState(() {
+          _isLoading = true;
+        });
+        await authData.addProduct(
+          ctx: context,
+          closetName: closetName,
+          productName: productName,
+          price: price,
+          productDescription: productDescription,
+          proCategory: proCategory,
+          productColor: productColor,
+          image: imagePick,
+          productSize: productSize,
+        );
+
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+
+    return _isLoading
+        ? Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
             ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  return Form(
-                    key: _addFormKey,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8.0,
-                        vertical: 5,
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ImgPicker(_imagePicked),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Closet Name",
-                              labelText: "Closet Name",
+          )
+        : GestureDetector(
+            onTap: () {
+              FocusScope.of(context).unfocus();
+            },
+            child: Scaffold(
+              body: CustomScrollView(
+                slivers: [
+                  sliverHeader(
+                    context,
+                    Icons.navigate_before,
+                    "Add Product Details",
+                    () => Navigator.of(context).pop(),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int index) {
+                        return Form(
+                          key: _addFormKey,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0,
+                              vertical: 5,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ImgPicker(_imagePicked),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Closet Name",
+                                    labelText: "Closet Name",
+                                  ),
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return "Required";
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (newValue) {
+                                    setState(() {
+                                      closetName = newValue;
+                                    });
+                                  },
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Product Name",
+                                    labelText: "Product Name",
+                                  ),
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return "Required";
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (newValue) {
+                                    setState(() {
+                                      productName = newValue;
+                                    });
+                                  },
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Price",
+                                    labelText: "Price",
+                                  ),
+                                  keyboardType: TextInputType.number,
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return "Required";
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (newValue) {
+                                    setState(() {
+                                      price = double.parse(newValue);
+                                    });
+                                  },
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Description",
+                                    labelText: "Description",
+                                  ),
+                                  keyboardType: TextInputType.multiline,
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return "Required";
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (newValue) {
+                                    setState(() {
+                                      productDescription = newValue;
+                                    });
+                                  },
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Size - L/M/XL/XXL",
+                                    labelText: "Size",
+                                  ),
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return "Required";
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (newValue) {
+                                    setState(() {
+                                      productSize = newValue;
+                                    });
+                                  },
+                                ),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Color",
+                                    labelText: "Color",
+                                  ),
+                                  validator: (String value) {
+                                    if (value.isEmpty) {
+                                      return "Required";
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (newValue) {
+                                    setState(() {
+                                      productColor = newValue;
+                                    });
+                                  },
+                                ),
+                                DropdownButtonFormField(
+                                  value: proCategory,
+                                  decoration: InputDecoration(
+                                    hintText: "Category",
+                                    labelText: "Category",
+                                  ),
+                                  items: productCategories == null
+                                      ? null
+                                      : productCategories.map(
+                                          (cat) {
+                                            return new DropdownMenuItem(
+                                              child: new Text(cat),
+                                              value: cat,
+                                            );
+                                          },
+                                        ).toList(),
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      proCategory = newValue;
+                                      // print(proCategory);
+                                    });
+                                  },
+                                ),
+                                TextButton.icon(
+                                  onPressed: validate,
+                                  icon: Icon(
+                                    Icons.add,
+                                    color: Colors.black54,
+                                  ),
+                                  label: Text(
+                                    "Add Product",
+                                  ),
+                                  style: ButtonStyle(
+                                    padding: MaterialStateProperty.all<
+                                        EdgeInsetsGeometry>(
+                                      EdgeInsets.symmetric(horizontal: 20),
+                                    ),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(30),
+                                        side: BorderSide(
+                                          color: Colors.black54,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Product Name",
-                              labelText: "Product Name",
-                            ),
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Price",
-                              labelText: "Price",
-                            ),
-                            keyboardType: TextInputType.number,
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Description",
-                              labelText: "Description",
-                            ),
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Size - L/M/XL/XXL",
-                              labelText: "Size",
-                            ),
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Color",
-                              labelText: "Color",
-                            ),
-                          ),
-                          DropdownButtonFormField(
-                            value: proCategory,
-                            decoration: InputDecoration(
-                              hintText: "Category",
-                              labelText: "Category",
-                            ),
-                            items: productCategories == null
-                                ? null
-                                : productCategories.map(
-                                    (cat) {
-                                      return new DropdownMenuItem(
-                                        child: new Text(cat),
-                                        value: cat,
-                                      );
-                                    },
-                                  ).toList(),
-                            onChanged: (newValue) {
-                              setState(() {
-                                proCategory = newValue;
-                                // print(proCategory);
-                              });
-                            },
-                          ),
-                        ],
-                      ),
+                        );
+                      },
+                      childCount: 1,
                     ),
-                  );
-                },
-                childCount: 1,
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
