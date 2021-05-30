@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Icons.menu,
               authData.currentUserData.isNotEmpty
                   ? "Hey ${currentUserData["Name"]}!"
-                  : "Hey Random!",
+                  : "Hey User!",
               drawerHandler,
             ),
             SliverList(
