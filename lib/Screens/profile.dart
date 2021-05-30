@@ -33,6 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
     final authData = Provider.of<AuthData>(context, listen: false);
+    authData.getCurrentUserData();
 
     return Scaffold(
       floatingActionButton: SizedBox(
@@ -132,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           height: mediaQuery.height * 0.03,
                         ),
                         Text(
-                          "Name",
+                          "${authData.currentUserData["Name"]}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
@@ -141,7 +142,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           textAlign: TextAlign.justify,
                         ),
                         Text(
-                          "@username",
+                          "@${authData.currentUserData["closetName"]}",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -172,10 +173,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     alignment: Alignment.center,
                     margin: EdgeInsets.symmetric(horizontal: 30),
                     child: CircleAvatar(
-                        radius: 60.0,
-                        foregroundImage: NetworkImage(
-                          'https://files.thehandbook.com/uploads/2014/10/Ed-Sheeran.jpg',
-                        )),
+                      radius: 60.0,
+                      foregroundImage: NetworkImage(
+                        'https://files.thehandbook.com/uploads/2014/10/Ed-Sheeran.jpg',
+                      ),
+                    ),
                   ),
                   height: mediaQuery.height * 0.2,
                   width: mediaQuery.width * 0.75,
@@ -210,27 +212,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ],
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   unselectedItemColor: Colors.black,
-      //   selectedItemColor: kHorizontalListButtonColor,
-      //   backgroundColor: Colors.white,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.home,
-      //         size: 35.0,
-      //       ),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.person,
-      //         size: 35.0,
-      //       ),
-      //       label: 'Profile',
-      //     ),
-      //   ],
-      // ),
     );
   }
 
