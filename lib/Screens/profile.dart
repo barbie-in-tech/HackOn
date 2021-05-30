@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:thrifter_hackon/Screens/AddProduct_Screen.dart';
+import 'package:thrifter_hackon/Screens/AuthScreen.dart';
+
+import '../Provider/authProvider.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -28,6 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
+    final authData = Provider.of<AuthData>(context, listen: false);
+
     return Scaffold(
       floatingActionButton: SizedBox(
         height: 60.0,
@@ -42,7 +48,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Animation<double> animation,
                   Animation<double> secondaryAnimation,
                 ) {
-                  return AddProduct();
+                  return authData.auth.currentUser == null
+                      ? AuthScreen()
+                      : AddProduct();
                 },
                 transitionsBuilder: (
                   BuildContext context,
